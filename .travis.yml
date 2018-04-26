@@ -13,7 +13,7 @@ install:
 - docker push 592115001/se234-lab10-backend
 - docker pull 592115001/se234-lab10-client
 script:
-- docker-compose -H "tcp://54.213.117.250:1234" up
+- docker-compose -H "tcp://54.213.117.250:1234" up -d
 cache:
   directories:
   - "#HOME/.m2"
