@@ -1,0 +1,23 @@
+language: java
+before_install:
+- sudo rm /usr/local/bin/docker-compose
+- curl -L https://github.com/docker/compose/reeases/download/1.20.1/docker-compose-`uname
+  -s`-`uname -m` > docker-compose
+- chmod +x docker-compose
+- sudo mv docker-compose /usr/local/bin
+- docker login -u "592115001" -p "$DOCKER_PASSWORD"
+install:
+- mvn install -Dmaven.javadoc.skip=true -B -V
+- ls -l
+- docker build --build-arg JAR_FILE=/target/backend.jar -t 592115001/se234-lab10-backend  .
+- docker push 592115001/se234-lab10-backend
+- docker pull 592115001/se234-lab10-client
+script:
+- docker-compose -H "tcp://54.213.117.250:1234" up -d
+cache:
+  directories:
+  - "#HOME/.m2"
+env:
+  global:
+  - secure: nqF/cXYrxhKGM/WYzxTn5AB845fBZcVaJCO0E4nAuAUSI8YdeHlpWbQnat3+GvdaBphNO8D/TmW4DC48B1xjRbZQ4mVE0A+7Wp+L55IDPaJHxP+o6IA+74Rob4OB5FqEjOqeURN6pvFXDMIHACPQ+Teas6fDdM3tsDhtvNSEBB/l0cjEltez1LyNDnJ0pZHlPtUZoSzPfDrGeH7d5mLb2+eahmxzfxerc1H6EpJZpo5DBcujjA2yxmtiK3Gfkq+VybtrAyHt9McWykTrk55tT+0lCQMch+ABHJLHy/iULuBL0CHWqETXr4VgH4tOh+ZUtXxGS9DhurCrwK5OsGLTkqeONqzhR+iw0Gy7BqOVTBIeaJ2I2JENOZeSmsKKFmosEysePgYj3DJQB6YWqxOXeZ2DjtMp3AQ+K91ZcC5I9lKybUNmsS0f3czSnkSYlUl09eBuy1m81kB/efx0xOuYnhdRHz/FJ5cGJWxio0TdmJsfTc7gO2G3ZI4LeGlBGlM3T6NKG8r0AjcWsT1sWIiAxV0Y0GlGOSQN0IzCWwu6AJNZUgC8Dlp1MwqAWy5Idkp5xTzSEdP/Z/cB/rl/fEe7ltHVH75VjIM0IdFrL+M4s5DByxcpo6jEUm5imtem6rHAR8EuY8aUx/Yie9PTSz96zDrJeeR9jPmiiqcZkK1wG+w=
+  - secure: XBxPoDPEnwJq1VuI6Gt2tImBNA0QIy8XxMCLEPzx5SCxgfd/a2BvJVlf+pezXWtNN1OiuYRRnsNReAP1HD8oAgp03wEJnHDeoUUmFxMwzQpXq+/KUiWPqFgkOSw/3ykKcwReAefzKMqfedSKHDXXPXOgGLSx1MdTsg/7VrDT3d71mn3brnZRT6atVgZA/npBTdluQNsmhrfekkSbfaiNZHuCHAJl/rJ1OmzBepcp4oT/ED/Y5np7TgEzGxdgajK3QBYg9DLotyRXLv6S/YGNXmgI2nAR0wqsRo7+k+2VGYHvEdYwhmtZdQHxEFZFo1GDrx2+Gpd218yx5LdggmP8z8z1Cg1ryy+KsNLwRUEq/V9H5B67nvoM97mYiBL2ksHxVlUMIhdBGd1bJgJLwcxAeQ0K1QdyQQTEBmbNW3noTGl2S3zAV9xTwu/v4XdBaQL1QYP6moPNlNIz1B14YPI6lx5yiZnqTWoQI6JxId5eRa+SfxpadaQrc/OGF/JLQ9OFL+7ARspl8LZT6CeK1xV6qV4wcqDWZlvMj8pK4Gd0g0+OS87JZDENZ3Fvnq/4QC1zHwBIiie05LI1qXJuP4cf8QannQLSmPdY4YUWSvnL4jVIr+sSrK/d1TGV/b1T5t+0oMpLL7cvJgN5P0ByU4LRaadUCHYH4sPP66ZPHZkPYtA=
