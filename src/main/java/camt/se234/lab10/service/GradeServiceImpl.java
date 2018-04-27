@@ -20,4 +20,20 @@ public class GradeServiceImpl implements GradeService {
             return "F";
 
     }
+
+    @Override
+    public String getGrade(double midtermScore, double finalScore) {
+        double num = midtermScore + finalScore ;
+        if (num > 79.5) {
+            return "A";
+        }
+        else if (num > 74.5){
+            return "B";
+        }else if (num > 59.5){
+            return "C";
+        }else if (num > 32.5) {
+            return "D";
+        } else
+            return "F";
+    }
 }
