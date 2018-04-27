@@ -16,7 +16,7 @@ script:
 - docker-compose -H "tcp://54.213.117.250:1234" up -d
 cache:
   directories:
-  - "#HOME/.m2"
+  - "$HOME/.m2"
 env:
   global:
   - secure: nqF/cXYrxhKGM/WYzxTn5AB845fBZcVaJCO0E4nAuAUSI8YdeHlpWbQnat3+GvdaBphNO8D/TmW4DC48B1xjRbZQ4mVE0A+7Wp+L55IDPaJHxP+o6IA+74Rob4OB5FqEjOqeURN6pvFXDMIHACPQ+Teas6fDdM3tsDhtvNSEBB/l0cjEltez1LyNDnJ0pZHlPtUZoSzPfDrGeH7d5mLb2+eahmxzfxerc1H6EpJZpo5DBcujjA2yxmtiK3Gfkq+VybtrAyHt9McWykTrk55tT+0lCQMch+ABHJLHy/iULuBL0CHWqETXr4VgH4tOh+ZUtXxGS9DhurCrwK5OsGLTkqeONqzhR+iw0Gy7BqOVTBIeaJ2I2JENOZeSmsKKFmosEysePgYj3DJQB6YWqxOXeZ2DjtMp3AQ+K91ZcC5I9lKybUNmsS0f3czSnkSYlUl09eBuy1m81kB/efx0xOuYnhdRHz/FJ5cGJWxio0TdmJsfTc7gO2G3ZI4LeGlBGlM3T6NKG8r0AjcWsT1sWIiAxV0Y0GlGOSQN0IzCWwu6AJNZUgC8Dlp1MwqAWy5Idkp5xTzSEdP/Z/cB/rl/fEe7ltHVH75VjIM0IdFrL+M4s5DByxcpo6jEUm5imtem6rHAR8EuY8aUx/Yie9PTSz96zDrJeeR9jPmiiqcZkK1wG+w=
